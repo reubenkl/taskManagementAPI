@@ -1,4 +1,4 @@
-package com.reuben.interview.task_management_api;
+package com.reuben.interview;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

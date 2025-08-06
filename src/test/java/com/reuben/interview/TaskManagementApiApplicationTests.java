@@ -1,4 +1,4 @@
-package com.reuben.interview.task_management_api;
+package com.reuben.interview;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
