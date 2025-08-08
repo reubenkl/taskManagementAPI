@@ -1,6 +1,6 @@
 # Task Management API
 
-This is a simple RESTful API for managing tasks, built with Spring Boot. The project demonstrates key software engineering principles, including Domain-Driven Design (DDD), Test-Driven Development (TDD), and clean coding practices.
+This is a simple RESTful API for managing tasks, built with Spring Boot. Including Domain-Driven Design (DDD), Test-Driven Development (TDD), and clean coding practices.
 
 ## Features
 
@@ -20,10 +20,36 @@ This is a simple RESTful API for managing tasks, built with Spring Boot. The pro
 -   Java 17 or higher
 -   Maven 3.6 or higher
 
-### Installation
+### How to Run:
 
-Clone the repository to your local machine:
+**1. Clone the repository to your local machine:** 
 
 ```bash
-git clone [https://github.com/your-username/task-manager.git](https://github.com/your-username/task-manager.git)
-cd task-manager
+git clone [https://github.com/reubenkl/taskManagementAPI.git]
+cd taskManagementAPI
+```
+
+**2. Navigate to the projects root directory**
+
+**3. Execute the following command to boot up the application**
+```bash
+mvn spring-boot:run
+```
+The application will start on `http://localhost:8080`.
+
+### How to Run Tests:
+```bash
+mvn test
+```
+
+### TO Test APIs using Postman
+**Create Task: /api/v1/tasks**
+```dtd
+Request Payload:
+
+{
+"title": "Title 1",
+"description": "Title 1 Description",
+"due_date": "2025-08-12"
+}
+```
