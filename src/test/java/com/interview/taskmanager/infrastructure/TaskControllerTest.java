@@ -50,14 +50,14 @@ public class TaskControllerTest {
     @Test
     void createTask_shouldReturnCreatedTaskWithId() throws Exception {
         //request Payload
-        String jsonPayload = """
+        String jsonPayload = String.format("""
                 {
                   "title": "Title 1",
                   "description": "Description of Title 1",
                   "status": "PENDING",
-                  "due_date": "2025-08-11"
+                  "due_date": "%s"
                 }
-                """;
+                """, LocalDate.now());
         //Mock Task data
         Task mockedTask = new Task();
         mockedTask.setId("1234");

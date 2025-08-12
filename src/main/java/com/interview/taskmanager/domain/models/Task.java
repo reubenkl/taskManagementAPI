@@ -9,6 +9,7 @@ public class Task {
     private String description;
     private TaskStatus status;
     private LocalDate due_date;
+    private boolean isdeleted;
 
     public Task() {
     }
@@ -59,6 +60,14 @@ public class Task {
 
     public void setDue_date(LocalDate due_date) {
         this.due_date = due_date;
+    }
+
+    public boolean isIsdeleted() {
+        return isdeleted;
+    }
+
+    public void setIsdeleted(boolean isdeleted) {
+        this.isdeleted = isdeleted;
     }
 
     @Override

@@ -113,13 +113,11 @@ public class TaskServiceTest {
 
         taskService.deleteTask(task1.getId());
 
-        verify(taskRepository, times(1)).deleteById(task1.getId());
+        verify(taskRepository, times(1)).save(task1);
     }
 
     @Test
     void deleteTask_shouldThrowExceptionWhenNotFound() {
-        when(taskRepository.findById(anyString())).thenReturn(Optional.empty());
-
         assertThrows(TaskNotFoundException.class, () -> taskService.deleteTask("non-existent-id"));
     }
 

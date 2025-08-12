@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -34,7 +35,12 @@ public class TaskService {
     }
 
     public Task getTask(String id) throws TaskNotFoundException {
-        return taskRepository.findById(id).orElseThrow(() -> new TaskNotFoundException("Task not found with ID: " + id));
+        Optional<Task> existingTask = taskRepository.findById(id);
+        //Early return pattern
+        if(existingTask.isEmpty() || existingTask.get().isIsdeleted()){
+            throw new TaskNotFoundException("Task not found with ID: " + id);
+        }
+        return existingTask.get();
     }
 
     public Task updateTask(String id, TaskUpdateRequestDTO updatedRequest) throws TaskNotFoundException {
@@ -55,8 +61,9 @@ public class TaskService {
     }
 
     public void deleteTask(String id) throws TaskNotFoundException {
-        getTask(id);
-        taskRepository.deleteById(id);
+        Task existingTask = getTask(id);
+        existingTask.setIsdeleted(true);
+        taskRepository.save(existingTask);
     }
 
     public List<Task> getAllTasks(TaskStatus status, Integer page, Integer size) {
@@ -75,6 +82,6 @@ public class TaskService {
         int start = Math.min(page * size, tasks.size());
         int end = Math.min(start + size, tasks.size());
 
-        return tasks.subList(start, end);
+        return tasks.subList(start, end).stream().filter(task -> !task.isIsdeleted()).toList();
     }
 }

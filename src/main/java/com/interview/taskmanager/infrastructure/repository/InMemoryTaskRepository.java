@@ -25,11 +25,6 @@ public class InMemoryTaskRepository implements ITaskRepository {
     }
 
     @Override
-    public void deleteById(String id) {
-        tasks.remove(id);
-    }
-
-    @Override
     public List<Task> findAll() {
         return tasks.values().stream().collect(Collectors.toList());
     }

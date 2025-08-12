@@ -11,8 +11,6 @@ public interface ITaskRepository {
 
     Optional<Task> findById(String id);
 
-    void deleteById(String id);
-
     List<Task> findAll();
 
     List<Task> findAll(Predicate<Task> filter);
